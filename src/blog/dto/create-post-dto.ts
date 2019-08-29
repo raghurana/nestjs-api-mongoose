@@ -1,10 +1,8 @@
 
-import { Document } from 'mongoose';
-
-export interface Post extends Document {
+export class CreatePostDTO {
     readonly title: string;
     readonly description: string;
     readonly body: string;
     readonly author: string;
-    readonly date_posted: string;
+    readonly datePosted: string;
 }
