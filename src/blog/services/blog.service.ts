@@ -22,11 +22,11 @@ export class BlogService {
     }
 
     async deletePostById(idGuid: string) {
-        return this.postModel.deleteMany({ _id: idGuid });
+        return this.postModel.findByIdAndDelete(idGuid);
     }
 
-    async editPost() {
-        
+    async editPost(idGuid: string, postDto: CreatePostDTO) {
+        const editedPost = await this.postModel.findByIdAndUpdate(idGuid, postDto);
+        return editedPost;
     }
-
 }

@@ -1,7 +1,6 @@
-import { Controller, Post, Res, Body, Get, Delete, Param } from '@nestjs/common';
+import { Controller, Post, Res, Body, Get, Delete, Param, Put } from '@nestjs/common';
 import { BlogService } from '../services/blog.service';
 import { CreatePostDTO } from '../dto/create-post-dto';
-import { async } from 'rxjs/internal/scheduler/async';
 
 @Controller('blog')
 export class BlogController {
@@ -23,8 +22,12 @@ export class BlogController {
     }
 
     @Delete('/post/:id')
-    async deletePostById(@Param('id') id) {
+    async deletePostById(@Param('id') id: string) {
         return this.blogService.deletePostById(id);
     }
 
+    @Put('/post/:id')
+    async editPost(@Param('id') id: string, @Body() postDto: CreatePostDTO) {
+        return this.blogService.editPost(id, postDto);
+    }
 }
