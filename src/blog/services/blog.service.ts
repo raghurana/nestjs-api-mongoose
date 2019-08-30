@@ -21,4 +21,8 @@ export class BlogService {
         return this.postModel.find();
     }
 
+    async deletePostById(idGuid: string) {
+        return this.postModel.deleteMany({ _id: idGuid });
+    }
+
 }
