@@ -1,4 +1,4 @@
-import { Controller, Post, Res, Body } from '@nestjs/common';
+import { Controller, Post, Res, Body, Get } from '@nestjs/common';
 import { BlogService } from '../services/blog.service';
 import { CreatePostDTO } from '../dto/create-post-dto';
 
@@ -6,6 +6,11 @@ import { CreatePostDTO } from '../dto/create-post-dto';
 export class BlogController {
 
     constructor(private blogService: BlogService) {}
+
+    @Get('/posts')
+    async getAllPosts() {
+        return this.blogService.getAllPosts();
+    }
 
     @Post('/newpost')
     async newPost(@Body() postDto: CreatePostDTO) {

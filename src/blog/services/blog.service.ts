@@ -17,4 +17,8 @@ export class BlogService {
         return newPost.save();
     }
 
+    async getAllPosts(): Promise<Post[]> {
+        return this.postModel.find();
+    }
+
 }
